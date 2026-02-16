@@ -98,7 +98,7 @@ export default function ProductDetails() {
                     <div className="space-y-4 lg:col-span-5">
                         <div className="relative aspect-square border border-gray-100 rounded-xl overflow-hidden bg-gray-50">
                             <Image
-                                src={product.image}
+                                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${product.image}`}
                                 alt={product.title}
                                 fill
                                 className="object-contain p-16"
@@ -110,7 +110,7 @@ export default function ProductDetails() {
                         <div className="flex gap-4">
                             {product.thumbnails.map((img, i) => (
                                 <div key={i} className={`w-20 h-20 border rounded-lg overflow-hidden cursor-pointer hover:border-primary transition-colors ${i === 0 ? 'border-primary' : 'border-gray-200'}`}>
-                                    <Image src={img} alt="thumb" width={80} height={80} className="object-contain p-2" />
+                                    <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${img}`} alt="thumb" width={80} height={80} className="object-contain p-2" />
                                 </div>
                             ))}
                         </div>

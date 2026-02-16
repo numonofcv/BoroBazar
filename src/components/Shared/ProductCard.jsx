@@ -31,7 +31,7 @@ const ProductCard = ({ product, imageSizes = "(max-width: 640px) 100vw, (max-wid
 
             <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-md">
                 <Image
-                    src={product.image}
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${product.image}`}
                     alt={product.title}
                     fill
                     sizes={imageSizes}

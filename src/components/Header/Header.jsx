@@ -36,7 +36,7 @@ export default function Header() {
 
                             <Link href="/">
                                 <Image
-                                    src="/logo.png"
+                                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
                                     alt="BoroBazar"
                                     width={180}
                                     height={45}
@@ -101,7 +101,7 @@ export default function Header() {
                     <div className="absolute left-0 top-0 bottom-0 w-[85%] max-w-[320px] bg-white shadow-2xl flex flex-col animate-in slide-in-from-left duration-300">
                         <div className="p-4 border-b border-gray-100 flex items-center justify-between bg-white">
                             <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                                <Image src="/logo.png" alt="BoroBazar" width={130} height={35} className="object-contain" />
+                                <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`} alt="BoroBazar" width={130} height={35} className="object-contain" />
                             </Link>
                             <button
                                 onClick={() => setIsMobileMenuOpen(false)}

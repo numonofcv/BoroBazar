@@ -49,7 +49,7 @@ export default function CheckoutOrderSummary() {
                     <div key={item.id} className="flex items-center justify-between gap-4">
                         <div className="flex items-center gap-3">
                             <div className="w-16 h-16 border border-gray-100 rounded-md overflow-hidden bg-gray-50 flex-shrink-0">
-                                <Image src={item.image} alt={item.title} width={64} height={64} className="object-contain p-1" />
+                                <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${item.image}`} alt={item.title} width={64} height={64} className="object-contain p-1" />
                             </div>
                             <div className="min-w-0">
                                 <h3 className="text-[14px] font-bold text-[#212121] truncate">{item.title}</h3>

@@ -88,7 +88,7 @@ export default function TopCategories() {
                             <div className="w-full aspect-square bg-white border border-gray-100 rounded-[10px] p-6 flex items-center justify-center group-hover:shadow-md transition-all duration-300">
                                 <div className="relative w-full h-full">
                                     <Image
-                                        src={category.image}
+                                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${category.image}`}
                                         alt={category.name}
                                         fill
                                         sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 10vw"

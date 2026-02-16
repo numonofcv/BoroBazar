@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Star, X, ShoppingCart } from "lucide-react";
 
 export default function WishlistCard({ item, onRemove, onAddToCart }) {
@@ -18,10 +19,11 @@ export default function WishlistCard({ item, onRemove, onAddToCart }) {
             {/* Image Section */}
             <Link href="/product" className="block">
                 <div className="relative aspect-square bg-gray-50 p-6">
-                    <img
-                        src={item.image}
+                    <Image
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${item.image}`}
                         alt={item.name}
-                        className="w-full h-full object-contain hover:scale-105 transition-transform"
+                        fill
+                        className="object-contain hover:scale-105 transition-transform"
                     />
 
                     {/* Out of Stock Overlay */}
