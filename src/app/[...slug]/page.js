@@ -1,4 +1,5 @@
-import HomePage from "@/pages/HomePage"
+import { Suspense } from "react"
+import { notFound } from "next/navigation"
 import CartPage from "@/pages/CartPage"
 import ProductListingPage from "@/pages/ProductListingPage"
 import ProductDetailsPage from "@/pages/ProductDetailsPage"
@@ -10,23 +11,32 @@ import ProfilePage from "@/pages/ProfilePage"
 import OrdersPage from "@/pages/OrdersPage"
 import WishlistPage from "@/pages/WishlistPage"
 
-export async function generateMetadata({ params, searchParams }) {
+export async function generateStaticParams() {
+    return [
+        { slug: ['cart'] },
+        { slug: ['shop'] },
+        { slug: ['catalog'] },
+        { slug: ['product'] },
+        { slug: ['checkout'] },
+        { slug: ['login'] },
+        { slug: ['register'] },
+        { slug: ['forgot-password'] },
+        { slug: ['profile'] },
+        { slug: ['orders'] },
+        { slug: ['wishlist'] },
+    ];
+}
+
+export async function generateMetadata({ params }) {
     const { slug } = await params
-    const query = await searchParams
     const currentSlug = slug ? slug[0] : ""
 
     let title = "Borobazar - Online Grocery Store"
 
-    if (!currentSlug) {
-        title = "Borobazar - Home"
-    } else if (currentSlug === "cart") {
+    if (currentSlug === "cart") {
         title = "Shopping Cart - Borobazar"
     } else if (currentSlug === "shop" || currentSlug === "catalog") {
-        if (query?.category) {
-            title = `${decodeURIComponent(query.category)} - Borobazar`
-        } else {
-            title = "Shop - Borobazar"
-        }
+        title = "Shop - Borobazar"
     } else if (currentSlug === "product") {
         title = "Product Details - Borobazar"
     } else if (currentSlug === "checkout") {
@@ -60,7 +70,11 @@ export default async function Page({ params }) {
     }
 
     if (currentSlug === "shop" || currentSlug === "catalog") {
-        return <ProductListingPage />
+        return (
+            <Suspense fallback={<div>Loading Products...</div>}>
+                <ProductListingPage />
+            </Suspense>
+        )
     }
 
     if (currentSlug === "product") {
@@ -95,5 +109,5 @@ export default async function Page({ params }) {
         return <WishlistPage />
     }
 
-    return <HomePage />
+    return notFound();
 }
