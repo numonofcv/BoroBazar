@@ -1,0 +1,2 @@
+:HL["/BoroBazar/_next/static/chunks/32bfb6af335f4cd6.css","style"]
+0:{"buildId":"IvUdzRDSh8GTEUBOqGiw8","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"c","paramKey":"orders","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
