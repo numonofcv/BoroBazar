@@ -60,7 +60,7 @@ export default function BreakfastProducts() {
         <section className="py-8 bg-white">
             <div className="container">
                 <SectionHeader title="Breakfast & Dairy" />
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-5">
                     {breakfastProducts.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}

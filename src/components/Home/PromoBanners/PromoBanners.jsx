@@ -44,7 +44,7 @@ export default function PromoBanners() {
                     {banners.map((banner) => (
                         <div
                             key={banner.id}
-                            className={`${banner.bgColor} rounded-[10px] py-2 lg:py-8 px-2 lg:px-4 relative overflow-hidden min-h-[200px] flex flex-col justify-center group cursor-pointer transition-all duration-300 hover:shadow-xl`}
+                            className={`${banner.bgColor} rounded-[10px] py-8 px-5 relative overflow-hidden min-h-[220px] lg:min-h-[200px] flex flex-col justify-center group cursor-pointer transition-all duration-300 hover:shadow-xl`}
                         >
                             {/* Background Image Layer */}
                             <div
@@ -65,19 +65,19 @@ export default function PromoBanners() {
                                 <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]" />
                             </div>
 
-                            <div className="max-w-[70%] z-10 relative">
-                                <span className="text-[13px] font-bold text-[#E6613A]">
+                            <div className="max-w-[75%] lg:max-w-[70%] z-10 relative">
+                                <span className="text-[12px] lg:text-[13px] font-bold text-[#E6613A]">
                                     {banner.subTitle}
                                 </span>
-                                <h3 className="text-[24px] font-extrabold text-[#212121] mt-3 leading-[1.2] tracking-tight">
+                                <h3 className="text-[18px] lg:text-[24px] font-extrabold text-[#212121] mt-2 lg:mt-3 leading-[1.2] tracking-tight">
                                     {banner.title}
                                 </h3>
-                                <p className="text-[14px] text-gray-400 mt-2 font-medium">
+                                <p className="text-[13px] lg:text-[14px] text-gray-400 mt-2 font-medium">
                                     {banner.description}
                                 </p>
                                 <Link
                                     href="/shop"
-                                    className="inline-flex items-center gap-2 bg-white text-[#212121] font-bold text-[14px] px-7 py-3 rounded-full mt-8 hover:bg-primary hover:text-white transition-all shadow-sm"
+                                    className="inline-flex items-center gap-2 bg-white text-[#212121] font-bold text-[13px] lg:text-[14px] px-6 lg:px-7 py-2.5 lg:py-3 rounded-full mt-6 lg:mt-8 hover:bg-primary hover:text-white transition-all shadow-sm"
                                 >
                                     Shop Now <span>→</span>
                                 </Link>

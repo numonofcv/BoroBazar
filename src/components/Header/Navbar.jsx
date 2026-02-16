@@ -59,7 +59,7 @@ export default function Navbar() {
                             More <ChevronDown size={16} className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                         </button>
 
-
+                        {/* Dropdown Menu */}
                         {isOpen && (
                             <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-100 rounded-md shadow-lg py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-200">
                                 {dropdownLinks.map((item) => (

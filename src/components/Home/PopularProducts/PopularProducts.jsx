@@ -3,14 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import ProductCard from "../../Shared/ProductCard";
-
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 const categories = [
     "Breads & Bakery",
@@ -84,8 +77,8 @@ export default function PopularProducts() {
     return (
         <section className="pt-8 pb-4 bg-white mt-10">
             <div className="container">
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
-                    <div className="flex items-center justify-between w-full lg:w-auto gap-4">
+                <div className="flex flex-col gap-6 mb-8">
+                    <div className="flex items-center justify-between w-full gap-4">
                         <div className="flex items-center gap-4">
                             <h2 className="text-[20px] font-bold text-[#212121]">Popular Products</h2>
                             <span className="text-[14px] text-gray-500 hidden sm:inline-block">Do not miss the current offers</span>
@@ -95,12 +88,12 @@ export default function PopularProducts() {
                         </Link>
                     </div>
 
-                    <div className="flex items-center gap-6 overflow-x-auto no-scrollbar pb-2 lg:pb-0">
+                    <div className="flex items-center gap-6 overflow-x-auto no-scrollbar pb-2 scroll-smooth">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
-                                className={`text-[15px] font-semibold whitespace-nowrap transition-all relative pb-1 ${activeCategory === cat
+                                className={`text-[15px] font-semibold whitespace-nowrap transition-all relative pb-2 ${activeCategory === cat
                                     ? "text-primary border-b-2 border-primary"
                                     : "text-gray-500 hover:text-primary"
                                     }`}
@@ -108,39 +101,20 @@ export default function PopularProducts() {
                                 {cat}
                             </button>
                         ))}
-
                     </div>
                 </div>
 
-                <div className="relative group">
-                    <Swiper
-                        modules={[Navigation]}
-                        spaceBetween={20}
-                        slidesPerView={1}
-                        navigation={{
-                            nextEl: ".popular-next",
-                            prevEl: ".popular-prev",
-                        }}
-                        breakpoints={{
-                            640: { slidesPerView: 2 },
-                            768: { slidesPerView: 3 },
-                            1024: { slidesPerView: 4 },
-                            1280: { slidesPerView: 5 },
-                            1536: { slidesPerView: 6 },
-                        }}
-                        className="popular-products-slider !pb-4"
-                    >
-                        {products.map((product) => (
-                            <SwiperSlide key={product.id}>
-                                <ProductCard product={product} imageSizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw" />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-5">
+                    {products.map((product) => (
+                        <div key={product.id} className="h-auto">
+                            <ProductCard product={product} imageSizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw" />
+                        </div>
+                    ))}
                 </div>
             </div>
 
             <style jsx global>{`
-                .popular-products-slider {
+                .popular-products-grid {
                     padding: 10px 2px;
                 }
             `}</style>
