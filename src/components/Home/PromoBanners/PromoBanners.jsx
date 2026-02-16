@@ -9,7 +9,7 @@ const banners = [
         subTitle: "Only This Week",
         title: "We provide you the best quality products",
         description: "A family place for grocery",
-        image: "/PromoProducts/juice.png",
+        image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/PromoProducts/juice.png`,
         bgColor: "bg-[#F3F1ED]",
         bgPos: "right -30px center",
         bgSize: "62% auto"
@@ -19,7 +19,7 @@ const banners = [
         subTitle: "Only This Week",
         title: "We make your grocery shopping more exciting",
         description: "Shine the morning...",
-        image: "/PromoProducts/popcorn.png",
+        image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/PromoProducts/popcorn.png`,
         bgColor: "bg-[#F3F1ED]",
         bgPos: "right -40px center",
         bgSize: "80% auto"
@@ -29,7 +29,7 @@ const banners = [
         subTitle: "Only This Week",
         title: "The one supermarket that saves your money",
         description: "Breakfast made better",
-        image: "/PromoProducts/fruits.png",
+        image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/PromoProducts/fruits.png`,
         bgColor: "bg-[#F3F1ED]",
         bgPos: "right -80px center",
         bgSize: "80% auto"
