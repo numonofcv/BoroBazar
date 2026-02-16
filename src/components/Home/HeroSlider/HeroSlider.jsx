@@ -17,7 +17,7 @@ const sliderData = [
         description: "We have prepared special discounts for you on organic breakfast products.",
         price: "$21.67",
         oldPrice: "$59.99",
-        image: "/Home-slider.png",
+        image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/Home-slider.png`,
         bgColor: "bg-[#F6F2EF]"
     },
     {
@@ -27,7 +27,7 @@ const sliderData = [
         description: "Direct from our organic farms to your doorstep with guaranteed freshness.",
         price: "$18.50",
         oldPrice: "$25.00",
-        image: "/Home-slider.png",
+        image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/Home-slider.png`,
         bgColor: "bg-[#F6F2EF]"
     },
     {
@@ -37,7 +37,7 @@ const sliderData = [
         description: "Nutritious and delicious snacks made with 100% natural ingredients.",
         price: "$12.99",
         oldPrice: "$19.99",
-        image: "/Home-slider.png",
+        image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/Home-slider.png`,
         bgColor: "bg-[#F6F2EF]"
     }
 ];
