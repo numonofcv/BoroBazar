@@ -2,5 +2,5 @@
 2:I[18259,["/BoroBazar/_next/static/chunks/9b4ea541fed8082f.js","/BoroBazar/_next/static/chunks/6a22114d0f4c9e25.js","/BoroBazar/_next/static/chunks/82fba9f772c12841.js","/BoroBazar/_next/static/chunks/39387005933f43b1.js"],"default"]
 3:I[97367,["/BoroBazar/_next/static/chunks/ff1a16fafef87110.js","/BoroBazar/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"buildId":"KaiYI96q75S3aIDB2V1zx","rsc":["$","$1","c",{"children":[["$","main",null,{"children":["$","$L2",null,{}]}],[["$","script","script-0",{"src":"/BoroBazar/_next/static/chunks/82fba9f772c12841.js","async":true}],["$","script","script-1",{"src":"/BoroBazar/_next/static/chunks/39387005933f43b1.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"swDsjU3Cas23_OSInxYbu","rsc":["$","$1","c",{"children":[["$","main",null,{"children":["$","$L2",null,{}]}],[["$","script","script-0",{"src":"/BoroBazar/_next/static/chunks/82fba9f772c12841.js","async":true}],["$","script","script-1",{"src":"/BoroBazar/_next/static/chunks/39387005933f43b1.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
 5:null
