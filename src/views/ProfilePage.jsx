@@ -117,8 +117,8 @@ export default function ProfilePage() {
 
     return (
         <div className="min-h-screen bg-[#FAFAFA] py-6 lg:py-12">
-            <div className="container px-4 sm:px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
+            <div className="container px-2 sm:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8">
                     {/* Sidebar */}
                     <div className="lg:col-span-1">
                         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -238,7 +238,7 @@ export default function ProfilePage() {
                                                     type="text"
                                                     value={fullName}
                                                     onChange={(e) => setFullName(e.target.value)}
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm sm:text-base"
                                                     required
                                                 />
                                             </div>
@@ -250,7 +250,7 @@ export default function ProfilePage() {
                                                     type="email"
                                                     value={email}
                                                     onChange={(e) => setEmail(e.target.value)}
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm sm:text-base"
                                                     required
                                                 />
                                             </div>
@@ -260,15 +260,15 @@ export default function ProfilePage() {
                                             <label className="block text-sm font-medium text-gray-700 mb-2">
                                                 Phone Number
                                             </label>
-                                            <div className="flex gap-3">
-                                                <div className="flex items-center gap-2 px-4 py-3 rounded-lg border border-gray-200 bg-gray-50">
-                                                    <span className="text-2xl">🇮🇳</span>
+                                            <div className="flex gap-2 sm:gap-3">
+                                                <div className="flex-shrink-0 flex items-center justify-center px-3 py-3 rounded-lg border border-gray-200 bg-gray-50 min-w-[50px] sm:min-w-[60px]">
+                                                    <span className="text-xl sm:text-2xl">🇮🇳</span>
                                                 </div>
                                                 <input
                                                     type="tel"
                                                     value={phone}
                                                     onChange={(e) => setPhone(e.target.value)}
-                                                    className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                                    className="flex-1 min-w-0 px-3 sm:px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm sm:text-base"
                                                     required
                                                 />
                                             </div>
@@ -302,7 +302,7 @@ export default function ProfilePage() {
                                                 value={oldPassword}
                                                 onChange={(e) => setOldPassword(e.target.value)}
                                                 placeholder="Old Password"
-                                                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm sm:text-base"
                                                 required
                                             />
                                         </div>
@@ -317,7 +317,7 @@ export default function ProfilePage() {
                                                     value={newPassword}
                                                     onChange={(e) => setNewPassword(e.target.value)}
                                                     placeholder="New Password"
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm sm:text-base"
                                                     required
                                                 />
                                             </div>
@@ -330,7 +330,7 @@ export default function ProfilePage() {
                                                     value={confirmPassword}
                                                     onChange={(e) => setConfirmPassword(e.target.value)}
                                                     placeholder="Confirm Password"
-                                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm sm:text-base"
                                                     required
                                                 />
                                             </div>
