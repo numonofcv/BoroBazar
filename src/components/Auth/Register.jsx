@@ -14,9 +14,9 @@ export default function Register() {
             <div className="absolute -left-20 top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
             <div className="absolute -right-20 bottom-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
 
-            <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 relative z-10 border border-gray-100">
-                <div className="text-center mb-8">
-                    <h2 className="text-[24px] font-bold text-[#212121]">Register with a new account</h2>
+            <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-5 sm:p-8 relative z-10 border border-gray-100">
+                <div className="text-center mb-6 sm:mb-8">
+                    <h2 className="text-[20px] sm:text-[24px] font-bold text-[#212121]">Register with a new account</h2>
                 </div>
 
                 <form className="space-y-5">

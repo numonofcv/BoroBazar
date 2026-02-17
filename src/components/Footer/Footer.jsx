@@ -14,7 +14,7 @@ export default function Footer() {
                 <div className="container">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                         {/* Contact Us */}
-                        <div className="border-r border-[#E5E7EB] p-3">
+                        <div className="lg:border-r border-[#E5E7EB] p-3">
                             <h3 className="text-[18px] font-bold text-[#212121] mb-6">Contact us</h3>
                             <div className="space-y-4 text-[14px] text-gray-500">
                                 <p className="leading-relaxed">Classyshop - Mega Super Store<br />507-Union Trade Centre France</p>

@@ -26,10 +26,10 @@ export default function AddressSelector() {
     const [selectedId, setSelectedId] = useState(1);
 
     return (
-        <div className="bg-white rounded-lg border border-gray-100 p-8">
-            <div className="flex items-center justify-between mb-8">
-                <h2 className="text-[20px] font-bold text-[#212121]">Select Delivery Address</h2>
-                <button className="flex items-center gap-2 text-primary border border-primary/20 bg-primary/5 px-4 py-2 rounded-md font-bold text-[14px] hover:bg-primary hover:text-white transition-all cursor-pointer">
+        <div className="bg-white rounded-lg border border-gray-100 p-4 sm:p-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#212121]">Select Delivery Address</h2>
+                <button className="w-full sm:w-auto flex items-center justify-center gap-2 text-primary border border-primary/20 bg-primary/5 px-4 py-2 rounded-md font-bold text-[14px] hover:bg-primary hover:text-white transition-all cursor-pointer">
                     <Plus size={18} /> Add New Address
                 </button>
             </div>
@@ -39,7 +39,7 @@ export default function AddressSelector() {
                     <div
                         key={addr.id}
                         onClick={() => setSelectedId(addr.id)}
-                        className={`relative p-6 rounded-xl border-2 transition-all cursor-pointer ${selectedId === addr.id ? "border-primary bg-[#F4F9F8]" : "border-gray-100 bg-[#F9FBFB]"}`}
+                        className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all cursor-pointer ${selectedId === addr.id ? "border-primary bg-[#F4F9F8]" : "border-gray-100 bg-[#F9FBFB]"}`}
                     >
                         <div className="flex items-start gap-4">
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-1 ${selectedId === addr.id ? "border-primary" : "border-gray-300"}`}>
