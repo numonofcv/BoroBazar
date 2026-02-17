@@ -24,6 +24,7 @@
 @layer base {
   body {
     background-color: #FAFAFA;
+    overflow-x: hidden;
   }
 }
 

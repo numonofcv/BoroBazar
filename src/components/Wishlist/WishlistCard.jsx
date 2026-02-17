@@ -18,7 +18,7 @@ export default function WishlistCard({ item, onRemove, onAddToCart }) {
 
             {/* Image Section */}
             <Link href="/product" className="block">
-                <div className="relative aspect-square bg-gray-50 p-6">
+                <div className="relative aspect-square bg-gray-50 p-10 sm:p-6">
                     <Image
                         src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${item.image}`}
                         alt={item.name}
@@ -41,7 +41,7 @@ export default function WishlistCard({ item, onRemove, onAddToCart }) {
             <div className="p-4">
                 {/* Product Name */}
                 <Link href="/product">
-                    <h3 className="font-normal text-sm text-gray-800 mb-3 line-clamp-2 hover:text-primary transition-colors min-h-[40px]">
+                    <h3 className="font-bold text-[15px] sm:font-normal sm:text-sm text-gray-800 mb-3 line-clamp-2 hover:text-primary transition-colors min-h-[40px]">
                         {item.name}
                     </h3>
                 </Link>
@@ -75,7 +75,7 @@ export default function WishlistCard({ item, onRemove, onAddToCart }) {
                 <button
                     onClick={() => onAddToCart(item)}
                     disabled={!item.inStock}
-                    className={`w-full py-2.5 rounded-md font-medium transition-all flex items-center justify-center gap-2 text-sm ${item.inStock
+                    className={`w-full py-2.5 rounded-md font-bold transition-all flex items-center justify-center gap-2 text-[13px] sm:text-sm ${item.inStock
                         ? "bg-primary text-white hover:bg-primary/90 cursor-pointer"
                         : "bg-gray-100 text-gray-400 cursor-not-allowed"
                         }`}

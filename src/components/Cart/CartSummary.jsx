@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function CartSummary({ subtotal }) {
     return (
-        <div className="bg-white rounded-lg p-6 sticky top-24">
+        <div className="bg-white rounded-lg p-4 lg:p-6 sticky top-24">
             <h2 className="text-[20px] font-bold text-[#212121] mb-6">Cart Totals</h2>
 
             <div className="space-y-4 mb-8">
