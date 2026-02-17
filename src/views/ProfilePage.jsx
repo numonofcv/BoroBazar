@@ -116,9 +116,9 @@ export default function ProfilePage() {
     };
 
     return (
-        <div className="min-h-screen bg-[#FAFAFA] py-12">
-            <div className="container">
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="min-h-screen bg-[#FAFAFA] py-6 lg:py-12">
+            <div className="container px-4 sm:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
                     {/* Sidebar */}
                     <div className="lg:col-span-1">
                         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -210,19 +210,19 @@ export default function ProfilePage() {
 
                     {/* Main Content */}
                     <div className="lg:col-span-3">
-                        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-8">
                             {/* Profile Tab */}
                             {activeTab === "profile" && (
                                 <>
                                     {/* Header */}
-                                    <div className="flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-6 border-b border-gray-100 gap-4">
                                         <div>
-                                            <h2 className="text-2xl font-bold text-gray-800">My Profile</h2>
+                                            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">My Profile</h2>
                                             <p className="text-sm text-gray-500 mt-1">All your account information in one place</p>
                                         </div>
                                         <button
                                             onClick={() => setActiveTab("password")}
-                                            className="px-4 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-all text-sm font-medium cursor-pointer"
+                                            className="px-4 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-all text-sm font-medium cursor-pointer w-full sm:w-auto"
                                         >
                                             Change Password
                                         </button>
@@ -359,14 +359,14 @@ export default function ProfilePage() {
                             {activeTab === "address" && (
                                 <>
                                     {/* Header */}
-                                    <div className="flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-6 border-b border-gray-100 gap-4">
                                         <div>
-                                            <h2 className="text-2xl font-bold text-gray-800">Address</h2>
+                                            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Address</h2>
                                             <p className="text-sm text-gray-500 mt-1">Manage Your Addresses</p>
                                         </div>
                                         <button
                                             onClick={() => setShowAddModal(true)}
-                                            className="flex items-center gap-2 px-4 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-all text-sm font-medium cursor-pointer"
+                                            className="flex items-center justify-center gap-2 px-4 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-all text-sm font-medium cursor-pointer w-full sm:w-auto"
                                         >
                                             <Plus size={18} />
                                             Add Address
@@ -462,140 +462,140 @@ export default function ProfilePage() {
                                     {/* Wishlist Items */}
                                     <div className="space-y-4">
                                         {/* Item 1 */}
-                                        <div className="flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-primary/50 transition-all relative">
-                                            <div className="w-20 h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden">
+                                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 border border-gray-200 rounded-xl hover:border-primary/50 transition-all relative">
+                                            <div className="w-24 h-24 sm:w-20 sm:h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden p-2">
                                                 <img
                                                     src="/FuturedProducts/futuredProduct1.png"
                                                     alt="Fortune Sunlite Refined Sunflower Oil"
                                                     className="w-full h-full object-contain"
                                                 />
                                             </div>
-                                            <div className="flex-1">
-                                                <p className="text-xs text-gray-500 mb-1">Fortune</p>
-                                                <h3 className="font-medium text-gray-800 mb-2">Fortune Sunlite Refined Sunflower Oil 1 L</h3>
-                                                <div className="flex items-center gap-1 mb-2">
-                                                    <div className="flex text-yellow-400">
+                                            <div className="flex-1 text-center sm:text-left">
+                                                <p className="text-[10px] sm:text-xs text-gray-500 mb-1">Fortune</p>
+                                                <h3 className="font-medium text-sm sm:text-base text-gray-800 mb-2 line-clamp-2">Fortune Sunlite Refined Sunflower Oil 1 L</h3>
+                                                <div className="flex items-center justify-center sm:justify-start gap-1 mb-2">
+                                                    <div className="flex text-yellow-400 text-xs sm:text-sm">
                                                         {"★★★★★".split("").map((star, i) => (
                                                             <span key={i}>{star}</span>
                                                         ))}
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="text-lg font-bold text-gray-800">$25.99</span>
-                                                    <span className="text-sm text-gray-400 line-through">$38.10</span>
-                                                    <span className="text-sm font-medium text-green-600">14% OFF</span>
+                                                <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                                                    <span className="text-base sm:text-lg font-bold text-gray-800">$25.99</span>
+                                                    <span className="text-xs sm:text-sm text-gray-400 line-through">$38.10</span>
+                                                    <span className="text-xs sm:text-sm font-medium text-green-600">14% OFF</span>
                                                 </div>
                                             </div>
                                             <button
-                                                className="absolute top-4 right-4 p-1 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+                                                className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1.5 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
                                                 title="Remove from wishlist"
                                             >
-                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-gray-400 hover:text-red-500">
+                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="text-gray-400 hover:text-red-500">
                                                     <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                                                 </svg>
                                             </button>
                                         </div>
 
                                         {/* Item 2 */}
-                                        <div className="flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-primary/50 transition-all relative">
-                                            <div className="w-20 h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden">
+                                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 border border-gray-200 rounded-xl hover:border-primary/50 transition-all relative">
+                                            <div className="w-24 h-24 sm:w-20 sm:h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden p-2">
                                                 <img
                                                     src="/BreaksfastProducts/breaksfastProduct2.png"
                                                     alt="Zandu Chyavanprashad"
                                                     className="w-full h-full object-contain"
                                                 />
                                             </div>
-                                            <div className="flex-1">
-                                                <p className="text-xs text-gray-500 mb-1">Zandu</p>
-                                                <h3 className="font-medium text-gray-800 mb-2">Zandu Chyavanprashad With No Added Sugar 900 gm</h3>
-                                                <div className="flex items-center gap-1 mb-2">
-                                                    <div className="flex text-yellow-400">
+                                            <div className="flex-1 text-center sm:text-left">
+                                                <p className="text-[10px] sm:text-xs text-gray-500 mb-1">Zandu</p>
+                                                <h3 className="font-medium text-sm sm:text-base text-gray-800 mb-2 line-clamp-2">Zandu Chyavanprashad With No Added Sugar 900 gm</h3>
+                                                <div className="flex items-center justify-center sm:justify-start gap-1 mb-2">
+                                                    <div className="flex text-yellow-400 text-xs sm:text-sm">
                                                         {"★★★★☆".split("").map((star, i) => (
                                                             <span key={i}>{star}</span>
                                                         ))}
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="text-lg font-bold text-gray-800">$25.99</span>
-                                                    <span className="text-sm text-gray-400 line-through">$38.10</span>
-                                                    <span className="text-sm font-medium text-green-600">14% OFF</span>
+                                                <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                                                    <span className="text-base sm:text-lg font-bold text-gray-800">$25.99</span>
+                                                    <span className="text-xs sm:text-sm text-gray-400 line-through">$38.10</span>
+                                                    <span className="text-xs sm:text-sm font-medium text-green-600">14% OFF</span>
                                                 </div>
                                             </div>
                                             <button
-                                                className="absolute top-4 right-4 p-1 hover:bg-gray-100 rounded-lg transition-colors"
+                                                className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1.5 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
                                                 title="Remove from wishlist"
                                             >
-                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-gray-400 hover:text-red-500">
+                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="text-gray-400 hover:text-red-500">
                                                     <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                                                 </svg>
                                             </button>
                                         </div>
 
                                         {/* Item 3 */}
-                                        <div className="flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-primary/50 transition-all relative">
-                                            <div className="w-20 h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden">
+                                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 border border-gray-200 rounded-xl hover:border-primary/50 transition-all relative">
+                                            <div className="w-24 h-24 sm:w-20 sm:h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden p-2">
                                                 <img
                                                     src="/LastProducts/lastProduct3.png"
                                                     alt="Gemini Refined Sunflower Oil"
                                                     className="w-full h-full object-contain"
                                                 />
                                             </div>
-                                            <div className="flex-1">
-                                                <p className="text-xs text-gray-500 mb-1">Gemini</p>
-                                                <h3 className="font-medium text-gray-800 mb-2">Gemini Refined Sunflower Oil 1 L</h3>
-                                                <div className="flex items-center gap-1 mb-2">
-                                                    <div className="flex text-yellow-400">
+                                            <div className="flex-1 text-center sm:text-left">
+                                                <p className="text-[10px] sm:text-xs text-gray-500 mb-1">Gemini</p>
+                                                <h3 className="font-medium text-sm sm:text-base text-gray-800 mb-2 line-clamp-2">Gemini Refined Sunflower Oil 1 L</h3>
+                                                <div className="flex items-center justify-center sm:justify-start gap-1 mb-2">
+                                                    <div className="flex text-yellow-400 text-xs sm:text-sm">
                                                         {"★★★★★".split("").map((star, i) => (
                                                             <span key={i}>{star}</span>
                                                         ))}
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="text-lg font-bold text-gray-800">$25.99</span>
-                                                    <span className="text-sm text-gray-400 line-through">$38.10</span>
-                                                    <span className="text-sm font-medium text-green-600">14% OFF</span>
+                                                <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                                                    <span className="text-base sm:text-lg font-bold text-gray-800">$25.99</span>
+                                                    <span className="text-xs sm:text-sm text-gray-400 line-through">$38.10</span>
+                                                    <span className="text-xs sm:text-sm font-medium text-green-600">14% OFF</span>
                                                 </div>
                                             </div>
                                             <button
-                                                className="absolute top-4 right-4 p-1 hover:bg-gray-100 rounded-lg transition-colors"
+                                                className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1.5 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
                                                 title="Remove from wishlist"
                                             >
-                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-gray-400 hover:text-red-500">
+                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="text-gray-400 hover:text-red-500">
                                                     <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                                                 </svg>
                                             </button>
                                         </div>
 
                                         {/* Item 4 */}
-                                        <div className="flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-primary/50 transition-all relative">
-                                            <div className="w-20 h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden">
+                                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 border border-gray-200 rounded-xl hover:border-primary/50 transition-all relative">
+                                            <div className="w-24 h-24 sm:w-20 sm:h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden p-2">
                                                 <img
                                                     src="/PopularProducts/lays.png"
                                                     alt="Lay's American Style Cream & Onion Potato Chips"
                                                     className="w-full h-full object-contain"
                                                 />
                                             </div>
-                                            <div className="flex-1">
-                                                <p className="text-xs text-gray-500 mb-1">Lay's</p>
-                                                <h3 className="font-medium text-gray-800 mb-2">Lay's American Style Cream & Onion Potato Chips 82 g</h3>
-                                                <div className="flex items-center gap-1 mb-2">
-                                                    <div className="flex text-yellow-400">
+                                            <div className="flex-1 text-center sm:text-left">
+                                                <p className="text-[10px] sm:text-xs text-gray-500 mb-1">Lay's</p>
+                                                <h3 className="font-medium text-sm sm:text-base text-gray-800 mb-2 line-clamp-2">Lay's American Style Cream & Onion Potato Chips 82 g</h3>
+                                                <div className="flex items-center justify-center sm:justify-start gap-1 mb-2">
+                                                    <div className="flex text-yellow-400 text-xs sm:text-sm">
                                                         {"★★★★★".split("").map((star, i) => (
                                                             <span key={i}>{star}</span>
                                                         ))}
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="text-lg font-bold text-gray-800">$25.99</span>
-                                                    <span className="text-sm text-gray-400 line-through">$38.10</span>
-                                                    <span className="text-sm font-medium text-green-600">14% OFF</span>
+                                                <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                                                    <span className="text-base sm:text-lg font-bold text-gray-800">$25.99</span>
+                                                    <span className="text-xs sm:text-sm text-gray-400 line-through">$38.10</span>
+                                                    <span className="text-xs sm:text-sm font-medium text-green-600">14% OFF</span>
                                                 </div>
                                             </div>
                                             <button
-                                                className="absolute top-4 right-4 p-1 hover:bg-gray-100 rounded-lg transition-colors"
+                                                className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1.5 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
                                                 title="Remove from wishlist"
                                             >
-                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-gray-400 hover:text-red-500">
+                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="text-gray-400 hover:text-red-500">
                                                     <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                                                 </svg>
                                             </button>
