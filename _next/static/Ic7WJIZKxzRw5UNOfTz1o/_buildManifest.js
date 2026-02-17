@@ -1,6 +1,6 @@
 self.__BUILD_MANIFEST = {
   "/CartPage": [
-    "static/chunks/8385e2a34f1ff8cb.js"
+    "static/chunks/c6a2919fa85d4c99.js"
   ],
   "/CheckoutPage": [
     "static/chunks/fa6b9b15c88d42a4.js"
@@ -21,7 +21,7 @@ self.__BUILD_MANIFEST = {
     "static/chunks/8071a7f2b90641d3.js"
   ],
   "/ProductListingPage": [
-    "static/chunks/c7e4c2942f6c23a4.js"
+    "static/chunks/64669cadcb461eca.js"
   ],
   "/ProfilePage": [
     "static/chunks/0e20d177445de70f.js"
@@ -30,7 +30,7 @@ self.__BUILD_MANIFEST = {
     "static/chunks/97ee79e2934c9bd7.js"
   ],
   "/WishlistPage": [
-    "static/chunks/9b705e7124081a03.js"
+    "static/chunks/177ebbc5a9b0cf99.js"
   ],
   "/_error": [
     "static/chunks/51bba2db1b36123a.js"
