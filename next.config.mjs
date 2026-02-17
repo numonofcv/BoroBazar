@@ -1,15 +1,16 @@
 const isProd = process.env.NODE_ENV === "production";
+const repoName = "/BoroBazar";
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: isProd ? "export" : undefined,
-  basePath: isProd ? "/BoroBazar" : "",
-  assetPrefix: isProd ? "/BoroBazar/" : "",
+  output: "export",
+  basePath: isProd ? repoName : "",
   trailingSlash: true,
   images: {
     unoptimized: true,
   },
   env: {
-    NEXT_PUBLIC_BASE_PATH: isProd ? "/BoroBazar" : "",
+    NEXT_PUBLIC_BASE_PATH: isProd ? repoName : "",
   },
 };
 
