@@ -1,2 +1,2 @@
-:HL["/BoroBazar/_next/static/chunks/9e6f477ab19f258b.css","style"]
-0:{"buildId":"GerojC1zGYVSyCFmmPIs8","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"c","paramKey":"orders","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+:HL["/BoroBazar/_next/static/chunks/ce02a08b78aa02bc.css","style"]
+0:{"buildId":"XN_Wx6XI9ZdRwFJEnEdJe","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"c","paramKey":"orders","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
