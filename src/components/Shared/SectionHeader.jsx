@@ -7,10 +7,10 @@ import { ChevronRight } from "lucide-react";
 const SectionHeader = ({ title, subtext, viewAllLink = "/shop", viewAllLabel = "View All" }) => {
     return (
         <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-4">
-                <h2 className="text-[20px] font-bold text-[#212121]">{title}</h2>
+            <div className="flex flex-col">
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#212121] leading-tight">{title}</h2>
                 {subtext && (
-                    <span className="text-[14px] text-gray-500 hidden sm:inline-block">
+                    <span className="text-[13px] sm:text-[14px] text-gray-400 mt-0.5">
                         {subtext}
                     </span>
                 )}

@@ -1,76 +1,42 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
+import { X } from "lucide-react";
 import CartItems from "../components/Cart/CartItems";
 import CartSummary from "../components/Cart/CartSummary";
 
-const initialCartItems = [
-    {
-        id: 1,
-        brand: "Fortune",
-        title: "Fortune Sunlite Refined Sunflower Oil 1 L",
-        price: 25.99,
-        oldPrice: 38.10,
-        discount: "14% OFF",
-        rating: 5,
-        image: "/PopularProducts/juice.png",
-        quantity: 1,
-    },
-    {
-        id: 2,
-        brand: "Zandu",
-        title: "Chyavanprashad With No Added Sugar 900 gm",
-        price: 25.99,
-        oldPrice: 38.10,
-        discount: "14% OFF",
-        rating: 5,
-        image: "/PopularProducts/rising.png",
-        quantity: 1,
-    },
-    {
-        id: 3,
-        brand: "Gemini",
-        title: "Gemini Refined Sunflower Oil 1 L",
-        price: 25.99,
-        oldPrice: 38.10,
-        discount: "14% OFF",
-        rating: 5,
-        image: "/PopularProducts/simpkeOrenge.png",
-        quantity: 1,
-    },
-    {
-        id: 4,
-        brand: "Lay's",
-        title: "Lay's American Style Cream & Onion Potato Chips 82 g",
-        price: 25.99,
-        oldPrice: 38.10,
-        discount: "14% OFF",
-        rating: 5,
-        image: "/PopularProducts/lays.png",
-        quantity: 1,
-    },
-];
+
+
+import { useCart } from "../context/CartContext";
 
 export default function CartPage() {
-    const [cartItems, setCartItems] = useState(initialCartItems);
-
-    const removeItem = (id) => {
-        setCartItems(cartItems.filter(item => item.id !== id));
-    };
-
-    const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const { cartItems, removeFromCart, cartTotal } = useCart();
 
     return (
         <div className="bg-[#F4F6F8] min-h-screen py-4 lg:py-10">
             <div className="container">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2">
-                        <CartItems items={cartItems} removeItem={removeItem} />
+                {cartItems.length > 0 ? (
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div className="lg:col-span-2">
+                            <CartItems items={cartItems} removeItem={removeFromCart} />
+                        </div>
+                        <div className="lg:col-span-1">
+                            <CartSummary subtotal={cartTotal} />
+                        </div>
                     </div>
-                    <div className="lg:col-span-1">
-                        <CartSummary subtotal={subtotal} />
+                ) : (
+                    <div className="bg-white rounded-lg p-12 text-center border border-gray-100">
+                        <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <X className="text-gray-300" size={40} />
+                        </div>
+                        <h2 className="text-2xl font-bold text-gray-800 mb-2">Sizning savatchangiz bo'sh</h2>
+                        <p className="text-gray-500 mb-8">Hozircha savatchangizda hech qanday mahsulot yo'q.</p>
+                        <Link href="/shop" className="inline-block bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-all">
+                            Xarid qilishni boshlash
+                        </Link>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     );

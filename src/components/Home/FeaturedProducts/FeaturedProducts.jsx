@@ -1,70 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "../../Shared/ProductCard";
 import SectionHeader from "../../Shared/SectionHeader";
-
-const featuredProducts = [
-    {
-        id: 1,
-        title: "100 Percent Apple Juice – 64 fl oz Bottle",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/FuturedProducts/futuredProduct1.png",
-    },
-    {
-        id: 2,
-        title: "Rising Crust Pizza Supreme – 31.5 oz",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/FuturedProducts/futuredProduct2.png",
-    },
-    {
-        id: 3,
-        title: "Simply Orange Juice – 52 fl oz Bottle",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/FuturedProducts/futuredProduct3.png",
-    },
-    {
-        id: 4,
-        title: "California Pizza Kitchen Margherita",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/FuturedProducts/futuredProduct4.png",
-    },
-    {
-        id: 5,
-        title: "Lay's Classic Party Size Potato Chips",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/FuturedProducts/futuredProduct5.png",
-    },
-    {
-        id: 6,
-        title: "Angel Soft Toilet Paper Mega Rolls",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/FuturedProducts/futuredProduct6.png",
-    }
-];
+import { fetchProducts } from "../../../services/api";
 
 export default function FeaturedProducts() {
+    const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const loadProducts = async () => {
+            setIsLoading(true);
+            const data = await fetchProducts(12, 20); // Get another set of products
+            setProducts(data);
+            setIsLoading(false);
+        };
+        loadProducts();
+    }, []);
+
     return (
         <section className="py-8 bg-white">
             <div className="container">
                 <SectionHeader title="Featured Products" />
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-5">
-                    {featuredProducts.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
+                {isLoading ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-5">
+                        {[...Array(6)].map((_, i) => (
+                            <div key={i} className="animate-pulse bg-gray-100 rounded-lg aspect-[2/3] w-full" />
+                        ))}
+                    </div>
+                ) : products.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-5">
+                        {products.map((product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="py-16 text-center bg-gray-50 rounded-xl border-2 border-dashed border-gray-100">
+                        <p className="text-gray-500 text-lg font-medium">Saralangan mahsulotlar topilmadi.</p>
+                    </div>
+                )}
             </div>
         </section>
     );

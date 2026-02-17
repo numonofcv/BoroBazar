@@ -17,7 +17,7 @@ export default function CartItems({ items, removeItem }) {
                     <div key={item.id} className="flex gap-4 sm:gap-6 py-4 lg:py-6 border-b border-gray-100 last:border-0 relative">
                         <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 bg-gray-50 rounded-md overflow-hidden">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${item.image}`}
+                                src={item.image.startsWith('http') ? item.image : `${process.env.NEXT_PUBLIC_BASE_PATH || ""}${item.image}`}
                                 alt={item.title}
                                 fill
                                 className="object-contain"

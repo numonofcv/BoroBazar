@@ -1,70 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "../../Shared/ProductCard";
 import SectionHeader from "../../Shared/SectionHeader";
-
-const breakfastProducts = [
-    {
-        id: 1,
-        title: "White Sandwich Bread – Freshly Baked",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct1.png",
-    },
-    {
-        id: 2,
-        title: "Premium Whole Wheat Brown Bread",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 5,
-        image: "/BreaksfastProducts/breaksfastProduct2.png",
-    },
-    {
-        id: 3,
-        title: "Kellogg's Corn Flakes Energy Plus",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct3.png",
-    },
-    {
-        id: 4,
-        title: "Chocolate Chocos Fills – Kids Special",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct4.png",
-    },
-    {
-        id: 5,
-        title: "Healthy Fruit & Nut Muesli Pack",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct5.png",
-    },
-    {
-        id: 6,
-        title: "Saffola Masala Oats – Classic Savory",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct6.png",
-    }
-];
+import { fetchProductsByCategory } from "../../../services/api";
 
 export default function BreakfastProducts() {
+    const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const loadProducts = async () => {
+            setIsLoading(true);
+            const data = await fetchProductsByCategory("groceries");
+            setProducts(data.slice(0, 6));
+            setIsLoading(false);
+        };
+        loadProducts();
+    }, []);
+
     return (
         <section className="py-8 bg-white">
             <div className="container">
                 <SectionHeader title="Breakfast & Dairy" />
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-5">
-                    {breakfastProducts.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
+                {isLoading ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-5">
+                        {[...Array(6)].map((_, i) => (
+                            <div key={i} className="animate-pulse bg-gray-100 rounded-lg aspect-[2/3] w-full" />
+                        ))}
+                    </div>
+                ) : products.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-5">
+                        {products.map((product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="py-16 text-center bg-gray-50 rounded-xl border-2 border-dashed border-gray-100">
+                        <p className="text-gray-500 text-lg font-medium">Nonushta va sut mahsulotlari topilmadi.</p>
+                    </div>
+                )}
             </div>
         </section>
     );

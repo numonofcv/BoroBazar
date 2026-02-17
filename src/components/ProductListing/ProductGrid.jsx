@@ -3,146 +3,26 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown, Check } from "lucide-react";
 import ProductCard from "../Shared/ProductCard";
-
-const allProducts = [
-    {
-        id: 1,
-        title: "100 Percent Apple Juice – 64 fl oz Bottle",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/PopularProducts/juice.png",
-        category: "Beverages"
-    },
-    {
-        id: 2,
-        title: "Rising Crust Pizza Supreme – 31.5 oz",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/PopularProducts/rising.png",
-        category: "Frozen Foods"
-    },
-    {
-        id: 3,
-        title: "Simply Orange Juice – 52 fl oz Bottle",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/PopularProducts/simpkeOrenge.png",
-        category: "Beverages"
-    },
-    {
-        id: 4,
-        title: "California Pizza Kitchen Margherita",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/PopularProducts/margrate.png",
-        category: "Frozen Foods"
-    },
-    {
-        id: 5,
-        title: "Lay's Classic Party Size Potato Chips",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/PopularProducts/lays.png",
-        category: "Biscuits & Snacks"
-    },
-    {
-        id: 6,
-        title: "Angel Soft Toilet Paper Mega Rolls",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/PopularProducts/megarols.png",
-        category: "Grocery & Staples"
-    },
-    {
-        id: 7,
-        title: "White Sandwich Bread – Freshly Baked",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct1.png",
-        category: "Breads & Bakery"
-    },
-    {
-        id: 8,
-        title: "Premium Whole Wheat Brown Bread",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 5,
-        image: "/BreaksfastProducts/breaksfastProduct2.png",
-        category: "Breads & Bakery"
-    },
-    {
-        id: 9,
-        title: "Kellogg's Corn Flakes Energy Plus",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct3.png",
-        category: "Breakfast & Dairy"
-    },
-    {
-        id: 10,
-        title: "Chocolate Chocos Fills – Kids Special",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct4.png",
-        category: "Breakfast & Dairy"
-    },
-    {
-        id: 11,
-        title: "Healthy Fruit & Nut Muesli Pack",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct5.png",
-        category: "Breakfast & Dairy"
-    },
-    {
-        id: 12,
-        title: "Saffola Masala Oats – Classic Savory",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/BreaksfastProducts/breaksfastProduct6.png",
-        category: "Breakfast & Dairy"
-    },
-    {
-        id: 13,
-        title: "100 Percent Apple Juice – 64 fl oz Bottle",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/LastProducts/lastProduct1.png",
-        category: "Beverages"
-    },
-    {
-        id: 14,
-        title: "Rising Crust Pizza Supreme – 31.5 oz",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/LastProducts/lastProduct2.png",
-        category: "Frozen Foods"
-    },
-    {
-        id: 15,
-        title: "Simply Orange Juice – 52 fl oz Bottle",
-        price: "$25.99",
-        oldPrice: "$38.10",
-        rating: 4,
-        image: "/LastProducts/lastProduct3.png",
-        category: "Beverages"
-    },
-];
+import { fetchProductsByCategory, fetchProducts } from "../../services/api";
 
 export default function ProductGrid({ selectedCategory, maxPrice = 1000 }) {
+    const [allProducts, setAllProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const loadProducts = async () => {
+            setIsLoading(true);
+            let data;
+            if (selectedCategory && selectedCategory !== "All") {
+                data = await fetchProductsByCategory(selectedCategory);
+            } else {
+                data = await fetchProducts(30); // Fetch more for the shop page
+            }
+            setAllProducts(data);
+            setIsLoading(false);
+        };
+        loadProducts();
+    }, [selectedCategory]);
     const [sortBy, setSortBy] = useState("Name A to Z");
     const [isSortOpen, setIsSortOpen] = useState(false);
     const sortDropdownRef = useRef(null);
@@ -215,17 +95,23 @@ export default function ProductGrid({ selectedCategory, maxPrice = 1000 }) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5">
-                {filteredProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                ))}
-                {filteredProducts.length === 0 && (
-                    <div className="col-span-full py-20 text-center">
-                        <p className="text-gray-500 text-lg">No products found in this category.</p>
+                {isLoading ? (
+                    [...Array(10)].map((_, i) => (
+                        <div key={i} className="animate-pulse bg-gray-100 rounded-lg aspect-[2/3] w-full" />
+                    ))
+                ) : (
+                    filteredProducts.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))
+                )}
+                {!isLoading && filteredProducts.length === 0 && (
+                    <div className="col-span-full py-20 text-center bg-gray-50 rounded-xl border-2 border-dashed border-gray-100">
+                        <p className="text-gray-500 text-lg font-medium">Mahsulot topilmadi.</p>
                         <button
                             onClick={() => window.location.href = '/shop'}
-                            className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all cursor-pointer"
+                            className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all cursor-pointer font-bold text-sm"
                         >
-                            View All Products
+                            Barcha mahsulotlarni ko'rish
                         </button>
                     </div>
                 )}

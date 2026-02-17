@@ -5,13 +5,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { Heart, ShoppingBag, User, Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import Search from "./Search";
-import Navbar, { navLinks, dropdownLinks } from "./Navbar";
+import Navbar from "./Navbar";
+import { fetchCategories } from "../../services/api";
+import { useWishlist } from "../../context/WishlistContext";
+import { useCart } from "../../context/CartContext";
 
 export default function Header() {
+    const { wishlistCount } = useWishlist();
+    const { cartCount } = useCart();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+    const [categories, setCategories] = useState([]);
+
     useEffect(() => {
+        const loadCategories = async () => {
+            const data = await fetchCategories();
+            setCategories(data);
+        };
+        loadCategories();
+
         if (isMobileMenuOpen) {
             document.body.style.overflow = "hidden";
         } else {
@@ -69,11 +82,19 @@ export default function Header() {
                             <div className="flex items-center gap-4 sm:gap-5">
                                 <Link href="/wishlist" className="relative group">
                                     <Heart size={24} className="text-gray-700 group-hover:text-primary transition-colors" />
-                                    <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">5</span>
+                                    {wishlistCount > 0 && (
+                                        <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-in zoom-in duration-300">
+                                            {wishlistCount}
+                                        </span>
+                                    )}
                                 </Link>
                                 <Link href="/cart" className="relative group">
                                     <ShoppingBag size={24} className="text-gray-700 group-hover:text-primary transition-colors" />
-                                    <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+                                    {cartCount > 0 && (
+                                        <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-in zoom-in duration-300">
+                                            {cartCount}
+                                        </span>
+                                    )}
                                 </Link>
                             </div>
                         </div>
@@ -143,14 +164,14 @@ export default function Header() {
 
                                     {isCategoryOpen && (
                                         <div className="bg-gray-50/50 rounded-lg mx-2 mt-1 mb-2 px-2 py-2 space-y-0.5 animate-in slide-in-from-top-1">
-                                            {navLinks.filter(item => item !== "Home").map((item) => (
+                                            {categories.map((cat) => (
                                                 <Link
-                                                    key={item}
-                                                    href={`/shop?category=${encodeURIComponent(item)}`}
-                                                    className="block px-3 py-2.5 rounded-md text-gray-600 hover:text-primary hover:bg-white transition-all text-sm"
+                                                    key={cat.slug}
+                                                    href={`/shop?category=${encodeURIComponent(cat.slug)}`}
+                                                    className="block px-3 py-2.5 rounded-md text-gray-600 hover:text-primary hover:bg-white transition-all text-sm capitalize"
                                                     onClick={() => setIsMobileMenuOpen(false)}
                                                 >
-                                                    {item}
+                                                    {cat.name}
                                                 </Link>
                                             ))}
                                         </div>

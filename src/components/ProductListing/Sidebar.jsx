@@ -1,17 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronRight, Star, Check } from "lucide-react";
-import { navLinks } from "../Header/Navbar";
-
-const categories = navLinks.filter(link => link !== "Home").map((name, index) => ({
-    name,
-    count: 10 + (index * 2)
-}));
+import { fetchCategories } from "../../services/api";
 
 const ratings = [5, 4, 3, 2, 1];
 
 export default function Sidebar({ selectedCategory, onCategoryChange, maxPrice = 1000, onPriceChange }) {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const loadCategories = async () => {
+            const apiCategories = await fetchCategories();
+            setCategories(apiCategories.map((cat, index) => ({
+                name: cat.name,
+                slug: cat.slug,
+                count: Math.floor(Math.random() * 20) + 5 // Dummy count as API doesn't provide it
+            })));
+        };
+        loadCategories();
+    }, []);
     const [openSections, setOpenSections] = useState({
         category: true,
         price: true,
@@ -52,18 +60,18 @@ export default function Sidebar({ selectedCategory, onCategoryChange, maxPrice =
                         </label>
 
                         {categories.map((cat) => (
-                            <label key={cat.name} className="flex items-center gap-3 cursor-pointer group py-1">
-                                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${selectedCategory === cat.name ? "border-primary bg-primary text-white" : "border-gray-300 group-hover:border-primary"}`}>
-                                    {selectedCategory === cat.name && <Check size={12} strokeWidth={3} />}
+                            <label key={cat.slug} className="flex items-center gap-3 cursor-pointer group py-1">
+                                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${selectedCategory === cat.slug ? "border-primary bg-primary text-white" : "border-gray-300 group-hover:border-primary"}`}>
+                                    {selectedCategory === cat.slug && <Check size={12} strokeWidth={3} />}
                                 </div>
                                 <input
                                     type="radio"
                                     name="category"
                                     className="hidden"
-                                    checked={selectedCategory === cat.name}
-                                    onChange={() => onCategoryChange(cat.name)}
+                                    checked={selectedCategory === cat.slug}
+                                    onChange={() => onCategoryChange(cat.slug)}
                                 />
-                                <span className={`text-[15px] transition-colors flex-grow ${selectedCategory === cat.name ? "text-primary font-medium" : "text-gray-600 group-hover:text-primary"}`}>
+                                <span className={`text-[15px] transition-colors flex-grow capitalize ${selectedCategory === cat.slug ? "text-primary font-medium" : "text-gray-600 group-hover:text-primary"}`}>
                                     {cat.name}
                                 </span>
                                 <span className="text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">{cat.count}</span>

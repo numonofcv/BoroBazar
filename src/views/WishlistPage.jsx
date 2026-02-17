@@ -4,96 +4,27 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Heart, ShoppingCart } from "lucide-react";
 import WishlistCard from "../components/Wishlist/WishlistCard";
+import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
 
 export default function WishlistPage() {
-    const [wishlistItems, setWishlistItems] = useState([
-        {
-            id: 1,
-            name: "100 Percent Apple Juice – 64 fl oz Bottle",
-            brand: "100%",
-            image: "/FuturedProducts/futuredProduct1.png",
-            price: 25.99,
-            originalPrice: 30.10,
-            discount: 0,
-            rating: 4,
-            reviews: 128,
-            inStock: true
-        },
-        {
-            id: 2,
-            name: "Rising Crust Pizza Supreme – 31.5 oz",
-            brand: "Rising Crust",
-            image: "/PopularProducts/lays.png",
-            price: 25.99,
-            originalPrice: 30.10,
-            discount: 0,
-            rating: 3,
-            reviews: 256,
-            inStock: true
-        },
-        {
-            id: 3,
-            name: "Simply Orange Juice – 52 fl oz Bottle",
-            brand: "Simply",
-            image: "/LastProducts/lastProduct3.png",
-            price: 25.99,
-            originalPrice: 30.10,
-            discount: 0,
-            rating: 3,
-            reviews: 89,
-            inStock: true
-        },
-        {
-            id: 4,
-            name: "California Pizza Kitchen Margherita",
-            brand: "California",
-            image: "/BreaksfastProducts/breaksfastProduct2.png",
-            price: 25.99,
-            originalPrice: 30.10,
-            discount: 0,
-            rating: 4,
-            reviews: 145,
-            inStock: true
-        },
-        {
-            id: 5,
-            name: "Lay's Classic Party Size Potato Chips",
-            brand: "Lay's",
-            image: "/PopularProducts/lays.png",
-            price: 25.99,
-            originalPrice: 30.10,
-            discount: 0,
-            rating: 4,
-            reviews: 320,
-            inStock: true
-        },
-        {
-            id: 6,
-            name: "Angel Soft Toilet Paper Mega Rolls",
-            brand: "Angel Soft",
-            image: "/LastProducts/lastProduct1.png",
-            price: 25.99,
-            originalPrice: 30.10,
-            discount: 0,
-            rating: 4,
-            reviews: 180,
-            inStock: true
-        }
-    ]);
+    const { wishlistItems, removeFromWishlist, wishlistCount } = useWishlist();
+    const { addToCart } = useCart();
 
     const handleRemoveItem = (id) => {
-        setWishlistItems(wishlistItems.filter(item => item.id !== id));
+        removeFromWishlist(id);
     };
 
     const handleAddToCart = (item) => {
-        alert(`${item.name} added to cart!`);
+        addToCart(item);
     };
 
     const handleAddAllToCart = () => {
-        const inStockItems = wishlistItems.filter(item => item.inStock);
-        if (inStockItems.length > 0) {
-            alert(`${inStockItems.length} items added to cart!`);
-        }
+        wishlistItems.forEach(item => {
+            if (item.stock !== 0) {
+                addToCart(item);
+            }
+        });
     };
 
     return (
