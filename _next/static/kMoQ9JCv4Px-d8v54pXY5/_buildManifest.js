@@ -9,7 +9,7 @@ self.__BUILD_MANIFEST = {
     "static/chunks/e9fe58496b8aea62.js"
   ],
   "/HomePage": [
-    "static/chunks/167b666fd90b9708.js"
+    "static/chunks/aa9a6143e8e52ccc.js"
   ],
   "/LoginPage": [
     "static/chunks/7e6929d0200ac668.js"
@@ -18,10 +18,10 @@ self.__BUILD_MANIFEST = {
     "static/chunks/35f663b0da557322.js"
   ],
   "/ProductDetailsPage": [
-    "static/chunks/318d191e4be3838b.js"
+    "static/chunks/8071a7f2b90641d3.js"
   ],
   "/ProductListingPage": [
-    "static/chunks/c64da4e6986cf6f9.js"
+    "static/chunks/c7e4c2942f6c23a4.js"
   ],
   "/ProfilePage": [
     "static/chunks/0e20d177445de70f.js"
